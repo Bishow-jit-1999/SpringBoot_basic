@@ -43,6 +43,11 @@ public class ProductController {
         return service.getProductPriceWise(price);
     }
 
+    @GetMapping("/product/max/price")
+    public Product MaxPriceProduct(){
+        return service.getHighPriceProduct();
+    }
+
     @PutMapping("/product/update")
     public Product UpdateProduct(@RequestBody Product product) {
         return service.updateproduct(product);

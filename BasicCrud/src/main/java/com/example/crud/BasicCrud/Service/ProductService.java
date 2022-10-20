@@ -33,9 +33,14 @@ public class ProductService {
         return repository.findByName(name);
     }
 
-    public List<Product> getProductPriceWise(double price){
+    public List<Product> getProductPriceWise(double price) {
         return repository.productGreaterThanPrice(price);
     }
+
+    public Product getHighPriceProduct(){
+        return repository.getmaxpriceproduct();
+    }
+
 
     //delete method
 

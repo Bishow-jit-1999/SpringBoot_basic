@@ -15,5 +15,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("select p from Product p where p.price>:pr")
     public List<Product> productGreaterThanPrice(@Param("pr") double pr);
 
+    @Query(value = "SELECT * FROM product_tbt where price=(Select max(price) from product_tbt)", nativeQuery = true)
+    public Product getmaxpriceproduct();
+
 
 }
