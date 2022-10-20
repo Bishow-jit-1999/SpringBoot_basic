@@ -30,6 +30,10 @@ public class StudentController {
         return service.getOneStudent(id);
     }
 
+    @GetMapping("/get/allstudent")
+    public List<Student> getAllStudent() {
+        return service.getAllStudent();
+    }
 
 
     @GetMapping("/get/student/cgpa/wise")

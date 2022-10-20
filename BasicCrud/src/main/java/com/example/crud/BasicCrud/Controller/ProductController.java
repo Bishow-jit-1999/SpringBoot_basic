@@ -38,6 +38,10 @@ public class ProductController {
         return service.getprouctbyname(name);
     }
 
+    @GetMapping("/products/pricegreaterthan/{price}")
+    public List<Product> GetProductPriceWise(@PathVariable double price){
+        return service.getProductPriceWise(price);
+    }
 
     @PutMapping("/product/update")
     public Product UpdateProduct(@RequestBody Product product) {

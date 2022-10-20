@@ -12,6 +12,8 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
     Product findByName(String name);
 
+    @Query("select p from Product p where p.price>:pr")
+    public List<Product> productGreaterThanPrice(@Param("pr") double pr);
 
 
 }

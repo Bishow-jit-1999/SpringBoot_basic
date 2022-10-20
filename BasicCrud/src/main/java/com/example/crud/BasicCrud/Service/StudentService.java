@@ -43,5 +43,8 @@ public class StudentService {
         return id+" is deleted successfully";
     }
 
+    public List<Student> getStudentcgpa(){
+        return  repository.getStudentcgpawise();
+    }
 
 }

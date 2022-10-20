@@ -9,4 +9,6 @@ import java.util.List;
 public interface StudentRepository extends JpaRepository<Student,Integer> {
     Student findByName(String name);
 
+    @Query("SELECT u FROM Student u where u.cgpa between 3.00 and 3.50 order by u.name desc")
+    public List<Student> getStudentcgpawise();
 }
