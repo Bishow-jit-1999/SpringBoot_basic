@@ -1,0 +1,56 @@
+package com.example.crud.BasicCrud.Service;
+
+import com.example.crud.BasicCrud.Entity.Product;
+import com.example.crud.BasicCrud.Repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class ProductService {
+    @Autowired
+    private ProductRepository repository;
+
+    //post method
+    public Product saveproduct(Product product){
+       return  repository.save(product);
+    }
+    public List<Product> saveproducts(List<Product> products){
+        return repository.saveAll(products);
+    }
+
+    //get method
+    public Product getProduct(int id){
+        return repository.findById(id).orElse(null);
+    }
+
+    public List<Product> getProducts(){
+        return repository.findAll();
+    }
+
+    public Product getprouctbyname(String name){
+        return repository.findByName(name);
+    }
+
+
+    //delete method
+
+    public String deleteproduct(int id){
+        repository.deleteById(id);
+        return "Deleted product Id is"+id;
+    }
+
+    //update method
+
+    public Product updateproduct(Product product){
+        Product existingproduct=repository.findById(product.getId()).orElse(null);
+        existingproduct.setName(product.getName());
+        existingproduct.setPrice(product.getPrice());
+        existingproduct.setQuantity(product.getQuantity());
+        return repository.save(existingproduct);
+    }
+
+
+
+}
