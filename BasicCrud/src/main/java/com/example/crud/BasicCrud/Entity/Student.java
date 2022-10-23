@@ -1,5 +1,6 @@
 package com.example.crud.BasicCrud.Entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 
 @Entity
@@ -12,9 +13,10 @@ public class Student {
     private String dept;
     private double cgpa;
 
-    @OneToOne(cascade = CascadeType.ALL)
+@OneToOne(cascade = CascadeType.ALL)
+@JsonManagedReference
     private Contact contact;
-    public Student(int id, String name, String dept, double cgpa , Contact contact) {
+    public Student(int id, String name, String dept, double cgpa ,Contact contact) {
         this.id = id;
         this.name = name;
         this.dept = dept;

@@ -1,9 +1,7 @@
 package com.example.crud.BasicCrud.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import javax.persistence.*;
 
 @Entity
 @Table(name="contact_tbt")
@@ -17,9 +15,14 @@ public class Contact {
     private String distict;
 
     public Contact(int id, int phone, String distict) {
+    @OneToOne(mappedBy = "contact")
+    @JsonBackReference
+    private Student student;
+    public Contact(int id, int phone, String distict, Student student) {
         this.id = id;
         this.phone = phone;
         this.distict = distict;
+        this.student=student;
     }
 
     public Contact() {
@@ -48,5 +51,12 @@ public class Contact {
 
     public void setDistict() {
         this.distict = distict;
+    }
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }
