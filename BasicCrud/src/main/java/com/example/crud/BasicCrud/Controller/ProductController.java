@@ -17,8 +17,6 @@ public class ProductController {
     private ProductService service;
 
     @PostMapping("/addProduct")
-    public Product AddProduct(@RequestBody Product product) {
-        return service.saveproduct(product);
     public ResponseEntity<Product> AddProduct(@RequestBody Product product) {
         Product pro= null;
         try{
@@ -36,8 +34,6 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public List<Product> GetAllProduct() {
-        return service.getProducts();
     public ResponseEntity<List<Product>> GetAllProduct() {
         List<Product> product=service.getProducts();
         if( product.size()<=0){
@@ -47,8 +43,6 @@ public class ProductController {
     }
 
     @GetMapping("/product/{id}")
-    public Product GetAProduct(@PathVariable int id) {
-        return service.getProduct(id);
     public ResponseEntity<Product> GetAProduct(@PathVariable int id) {
         Product aproduct=service.getProduct(id);
         if(aproduct == null){
@@ -58,8 +52,6 @@ public class ProductController {
     }
 
     @GetMapping("/product/name/{name}")
-    public Product GetProductByname(@PathVariable String name) {
-        return service.getprouctbyname(name);
     public ResponseEntity<Product> GetProductByname(@PathVariable String name) {
         Product Aproduct=service.getprouctbyname(name);
         if(Aproduct == null){
@@ -69,8 +61,6 @@ public class ProductController {
     }
 
     @GetMapping("/products/pricegreaterthan/{price}")
-    public List<Product> GetProductPriceWise(@PathVariable double price){
-        return service.getProductPriceWise(price);
     public ResponseEntity<List<Product>> GetProductPriceWise(@PathVariable double price){
         List<Product>products=service.getProductPriceWise(price);
         if(products.size()<=0){
@@ -79,9 +69,6 @@ public class ProductController {
         return ResponseEntity.of(Optional.of(products));
     }
 
-    @GetMapping("/product/max/price")
-    public Product MaxPriceProduct(){
-        return service.getHighPriceProduct();
     @GetMapping("product/max/price")
     public ResponseEntity<Product> MaxPriceProduct(){
         Product Aproduct= service.getHighPriceProduct();
@@ -92,8 +79,6 @@ public class ProductController {
     }
 
     @PutMapping("/product/update")
-    public Product UpdateProduct(@RequestBody Product product) {
-        return service.updateproduct(product);
     public ResponseEntity<Product> UpdateProduct(@RequestBody Product product) {
         try{
             this.service.updateproduct(product);
@@ -106,8 +91,6 @@ public class ProductController {
     }
 
     @DeleteMapping("/product/delete/{id}")
-    public String DeleteProduct(@PathVariable int id) {
-        return service.deleteproduct(id);
     public ResponseEntity<Void> DeleteProduct(@PathVariable int id) {
         try{
             this.service.deleteproduct(id);

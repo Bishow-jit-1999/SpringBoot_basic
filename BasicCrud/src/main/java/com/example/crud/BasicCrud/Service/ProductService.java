@@ -14,17 +14,16 @@ public class ProductService {
 
     //post method
     public Product saveproduct(Product product){
-       return  repository.save(product);
 
         return  repository.save(product);
     }
     public List<Product> saveproducts(List<Product> products){
+
         return repository.saveAll(products);
     }
 
     //get method
     public Product getProduct(int id){
-        return repository.findById(id).orElse(null);
         Product aproduct=null;
         try{
             aproduct =repository.findById(id).orElse(null);
@@ -36,13 +35,11 @@ public class ProductService {
 
     }
 
-    public List<Product> getProducts(){
     public  List<Product> getProducts(){
         return repository.findAll();
     }
 
     public Product getprouctbyname(String name){
-        return repository.findByName(name);
         Product aproduct=null;
         try{
             aproduct =repository.findByName(name);
@@ -54,6 +51,7 @@ public class ProductService {
     }
 
     public List<Product> getProductPriceWise(double price) {
+
         return repository.productGreaterThanPrice(price);
     }
 
