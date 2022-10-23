@@ -34,6 +34,7 @@ public class StudentService {
         obj.setName(student.getName());
         obj.setDept(student.getDept());
         obj.setCgpa(student.getCgpa());
+        obj.setContact(student.getContact());
         return repository.save(obj);
 
     }

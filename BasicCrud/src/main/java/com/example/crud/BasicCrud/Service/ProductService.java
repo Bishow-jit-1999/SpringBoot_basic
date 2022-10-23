@@ -31,6 +31,7 @@ public class ProductService {
         catch (Exception e){
             e.printStackTrace();
         }
+        Product aproduct =repository.findById(id).orElse(null);
         return aproduct;
 
     }
