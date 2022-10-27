@@ -2,11 +2,7 @@ package com.example.crud.BasicCrud.Entity;
 
 import net.bytebuddy.implementation.bind.annotation.Super;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 
 
 @Entity

@@ -24,13 +24,6 @@ public class ProductService {
 
     //get method
     public Product getProduct(int id){
-        Product aproduct=null;
-        try{
-            aproduct =repository.findById(id).orElse(null);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
         Product aproduct =repository.findById(id).orElse(null);
         return aproduct;
 
