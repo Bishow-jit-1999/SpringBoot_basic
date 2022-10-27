@@ -12,25 +12,31 @@ public class StudentService {
     @Autowired
     private StudentRepository repository;
 
-    public Student addStudent(Student student){
+
+    public Student addStudent(Student student) {
         return repository.save(student);
     }
 
-    public List<Student> addStudents(List<Student> student){
+    public List<Student> addStudents(List<Student> student) {
         return repository.saveAll(student);
+
     }
-    public Student getOneStudent(int id){
+
+    public Student getOneStudent(int id) {
         return repository.findById(id).orElse(null);
     }
-    public List<Student> getAllStudent(){
+
+    public List<Student> getAllStudent() {
         return repository.findAll();
     }
-    public Student getStudentByName(String name){
+
+    public Student getStudentByName(String name) {
         return repository.findByName(name);
     }
 
-    public Student  updateStudent(Student student){
-        Student obj=repository.findById(student.getId()).orElse(null);
+    public Student updateStudent(Student student) {
+        Student obj = repository.findById(student.getId()).orElse(null);
+        //Contact con=contactRespository.findById(student.getContact().getId()).orElse(null);
         obj.setName(student.getName());
         obj.setDept(student.getDept());
         obj.setCgpa(student.getCgpa());
@@ -39,13 +45,13 @@ public class StudentService {
 
     }
 
-    public String deleteStudent(int id){
+    public String deleteStudent(int id) {
         repository.deleteById(id);
-        return id+" is deleted successfully";
+        return id + " is deleted successfully";
     }
 
-    public List<Student> getStudentcgpa(){
-        return  repository.getStudentcgpawise();
+    public List<Student> getStudentcgpa() {
+        return repository.getStudentcgpawise();
     }
 
 }
