@@ -1,10 +1,12 @@
 package com.example.crud.BasicCrud.Helper;
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -12,9 +14,17 @@ import java.nio.file.StandardCopyOption;
 
 @Component
 public class FileUploadHelper {
+    //static path
+    // public final String UPLOAD_DIR="D:\\OneDrive\\OneDrive - intellier.com\\Documents\\SpringBoot_basic\\BasicCrud\\src\\main\\resources\\static\\image";
 
-   public final String UPLOAD_DIR="D:\\OneDrive\\OneDrive - intellier.com\\Documents\\SpringBoot_basic\\BasicCrud\\src\\main\\resources\\static\\image";
-   public boolean uploadFile(MultipartFile multipartFile){
+   //dynamic path
+     public final String UPLOAD_DIR=new ClassPathResource("static/image").getFile().getAbsolutePath();
+
+    public FileUploadHelper() throws IOException {
+    }
+
+
+    public boolean uploadFile(MultipartFile multipartFile){
        boolean f=false;
        try{
             //one way to read and write file
